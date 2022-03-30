@@ -6,15 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+     
         .container{
             display: flex;
-            justify-content: space-evenly;
-            margin: 2rem;
+            flex-direction: column;
+            
+            /* justify-items: center; */
+            align-items: center;
+            margin-top: 30vw;
         }
-        input,button{
+        img{
+            image-resolution: 50vw;
+        }
+        input{
             padding: 5px;
             outline: 3px;
             border-style: solid;
+            width: 15vw;
+            height: 2vw;
+            font-size: 2vw;
+            border-bottom-left-radius: 12px;
+            border-top-right-radius: 12px;
+            box-shadow: -2px 2px 0 0 gray;
+
+        }
+        .pin{
+            position: relative;
+
+        }
+        .age{
+            position: relative;
+            margin-top: 3vw;
+        }
+        .email{
+            position: relative;
+            margin-top: 3vw;
+        }
+        button{
+            outline: 3px;
+            border-style: solid;
+            width: 12.5vw;
+            height: 3.5vw;
+            font-size: 2vw;
+            border-radius: 7px;
+            position: relative;
+            margin-top: 3vw;
+            cursor: pointer;;
+
+        }
+        button:hover{
+            background-color: rgb(149, 216, 236);
         }
         .details{
             border: 2px;
@@ -26,17 +67,26 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <div class="container">
+     <div class="container">
         <input class="pin" type="text" placeholder="Enter pincode">
         <input class="age" type="text" placeholder="Enter age">
-        <input class="email" type="text" placeholder="Enter email">
+        <input class="email" type="email" placeholder="Enter email">
         <button>Result</button>
     </div>
+        <div class="item">
+
+        </div>
 </body>
 <script>
     let body = document.querySelector("body");
     let btn = document.querySelector("button");
+    let item = document.querySelector(".item");
+    let cont = document.querySelector(".container");
     btn.addEventListener("click",async function(){
+        
+        while(item.firstChild){
+            item.removeChild(item.firstChild);
+        }
     let pin = document.querySelector(".pin").value;
     let age = document.querySelector(".age").value;
     let email = document.querySelector(".email").value;
@@ -46,6 +96,7 @@
         for(let i=0;i<arr.length;i++){
             let div = document.createElement("div");
             div.classList.add("details");
+            let flag = true;
             // console.log(arr[i]);
         for(let key in arr[i]){
             let h5 = document.createElement("h5");
@@ -55,8 +106,9 @@
                 div.appendChild(h5);
                 div.appendChild(p);
             }
-            body.appendChild(div);
+            item.appendChild(div);
         }
+        cont.innerHTML= " ";
         })
 </script>
 </html>

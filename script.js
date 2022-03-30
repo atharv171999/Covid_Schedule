@@ -2,6 +2,8 @@ const puppeteer = require('puppeteer');
 const fs = require("fs");
 const xlsx = require("json-as-xlsx")
 let pin = process.argv[2];
+let age = Number(process.argv[3]);
+// console.log(age);
 (async () => {
   const browser = await puppeteer.launch({headless : false});
   const page = await browser.newPage();
@@ -21,6 +23,20 @@ await page.evaluate(function(){
   let searchbtn = document.querySelector(".searchBtn.pin-search-btn.accessibility-plugin-ac")
   searchbtn.click();
 })
+
+await page.waitForSelector("ul label.accessibility-plugin-ac");
+await page.waitForTimeout(3000);
+await page.evaluate(function(age){
+  let allage = document.querySelectorAll("ul label.accessibility-plugin-ac");  
+if(age>=12 && age<=14){
+  allage[0].click();
+}else if(age>=15 && age<=18){
+  allage[1].click();
+}else if(age>18){
+  allage[2].click();
+}
+    return
+},age)
 await page.waitForSelector(".item.active li");
 await page.waitForSelector(".col-sm-12.col-md-12.col-lg-12.cvc-list-item.ng-star-inserted");
 let arr = await page.evaluate(function(){
@@ -77,9 +93,9 @@ let settings = {
 }
 
 xlsx(data, settings) // Will download the excel file
-fs.writeFileSync("scheduleOfVaccination.json",vaccination);
+fs.writeFileSync("ScheduleOfVaccination.json",vaccination);
 console.log(vaccination);
 
-// // browser.close();
+browser.close();
 
 })();
