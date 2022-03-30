@@ -6,29 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-     
+        body{
+        }
         .container{
             display: flex;
             flex-direction: column;
-            
-            /* justify-items: center; */
-            align-items: center;
-            margin-top: 30vw;
+            margin-left: 10vw;
         }
         img{
             image-resolution: 50vw;
         }
         input{
+            border-color: black;
+            
+            color: black;
+            opacity: 0.5;
+            margin-top: 15vw;
             padding: 5px;
             outline: 3px;
             border-style: solid;
-            width: 15vw;
+            width: 13vw;
             height: 2vw;
-            font-size: 2vw;
+            font-size: 1.5vw;
             border-bottom-left-radius: 12px;
             border-top-right-radius: 12px;
-            box-shadow: -2px 2px 0 0 gray;
-
         }
         .pin{
             position: relative;
@@ -43,42 +44,62 @@
             margin-top: 3vw;
         }
         button{
+            
+            opacity: 0.9;
             outline: 3px;
             border-style: solid;
-            width: 12.5vw;
+            width: 11vw;
             height: 3.5vw;
             font-size: 2vw;
             border-radius: 7px;
             position: relative;
-            margin-top: 3vw;
-            cursor: pointer;;
-
+            cursor: pointer;
+            margin-left: 2vw;
+            margin-top: 8vw;
+            margin-bottom: 25vw;
         }
         button:hover{
-            background-color: rgb(149, 216, 236);
+            transition: ease-in-out 1ms;
+            background-color: rgb(224, 205, 33);
+            color: white;
         }
         .details{
             border: 2px;
             border-style: solid;
             border-color: black;
         }
-
+        .foot{
+            position: relative;
+            margin-top: 50rem;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
+    <header>
+        <img class="img1" src="https://th.bing.com/th/id/OIP.O0Gt0HiTYSSH8RPAMe8tkQHaCz?w=291&h=132&c=7&r=0&o=5&dpr=1.25&pid=1.7" alt="">
+    </header>
+    <article>
      <div class="container">
         <input class="pin" type="text" placeholder="Enter pincode">
         <input class="age" type="text" placeholder="Enter age">
         <input class="email" type="email" placeholder="Enter email">
-        <button>Result</button>
-    </div>
+        <button>Result</button> 
+     </div>
+     </article>
+     <section>
+        <div class="butt">
+        </div>
+     </section> 
         <div class="item">
 
         </div>
+        <footer class="foot"></footer>
 </body>
 <script>
     let body = document.querySelector("body");
+    let article = document.querySelector("article");
+    let section = document.querySelector("section");
     let btn = document.querySelector("button");
     let item = document.querySelector(".item");
     let cont = document.querySelector(".container");
@@ -105,6 +126,7 @@
                 p.innerText = arr[i][key];
                 div.appendChild(h5);
                 div.appendChild(p);
+
             }
             item.appendChild(div);
         }

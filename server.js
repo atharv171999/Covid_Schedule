@@ -31,7 +31,7 @@ res.send(arr);
 let info = await transporter.sendMail({
   from: '"Atharv Bhandari"<charu.messi.ab@gmail.com>', // sender address
   to: `${email}`, // list of receivers
-  subject: "Figth Against Covid", // Subject line
+  subject: "Fight Against Covid", // Subject line
   html: "<b>Schedule Of Vaccination</b>", // html body
   attachments:[{path:"./Schedule.xlsx"}]  
 });
